@@ -1,0 +1,301 @@
+# =============================================================================
+# PROPRIETARY CODE PROTECTION - CHURN PREDICTION PROJECT
+# =============================================================================
+
+# CRITICAL: This .gitignore protects proprietary implementations while
+# showcasing project structure and capabilities for portfolio purposes
+
+# =============================================================================
+# CORE PROPRIETARY ALGORITHMS & IMPLEMENTATIONS
+# =============================================================================
+
+# Advanced Model Training Components - Proprietary ensemble strategies
+src/components/advanced_model_trainer.py
+src/components/intelligent_feature_engineer.py
+src/components/smart_data_transformation.py
+
+# Prediction Pipeline - Advanced explainability and uncertainty quantification
+src/pipeline/predict_pipeline.py
+src/pipeline/train_pipeline.py
+
+# Core utilities with proprietary logic
+src/utils.py
+src/logger.py
+src/exception.py
+src/eda_utils.py
+
+# =============================================================================
+# SENSITIVE DATA & MODEL ARTIFACTS
+# =============================================================================
+
+# Raw and processed datasets
+input/
+*.csv
+*.xlsx
+*.json
+*.pkl
+
+# Model artifacts and trained models
+artifacts/
+notebooks/artifacts/
+*.joblib
+*.h5
+*.onnx
+
+# Model registry and metadata
+model_registry.json
+feature_importance.json
+validation_results.json
+transformation_log.json
+data_quality_report.json
+
+# =============================================================================
+# PROPRIETARY NOTEBOOKS & EXPERIMENTAL CODE
+# =============================================================================
+
+# Advanced EDA with proprietary analysis
+notebooks/EDA/Enhanced_EDA_Analysis.ipynb
+notebooks/EDA/*.pdf
+
+# Intelligent preprocessing and feature engineering
+notebooks/data\ preprocessing/
+notebooks/feature\ engineering/
+
+# Model development notebooks
+notebooks/model\ development/
+notebooks/model\ tuning/
+
+# Experimental features and research
+experiments/
+research/
+prototypes/
+
+# =============================================================================
+# APPLICATION & DEPLOYMENT SECRETS
+# =============================================================================
+
+# Flask application with proprietary analytics
+application.py
+
+# Configuration files with sensitive settings
+config.py
+# Allow config template for setup reference
+!config_template.py
+.env
+.env.local
+.env.production
+secrets.json
+
+# API keys and credentials
+*.key
+*.pem
+credentials/
+secrets/
+
+# =============================================================================
+# DEVELOPMENT & TESTING ARTIFACTS
+# =============================================================================
+
+# Testing files with proprietary test cases
+tests/
+*_test.py
+test_*.py
+
+# Development logs and debugging
+logs/
+*.log
+debug/
+
+# IDE and development configs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# =============================================================================
+# DEPLOYMENT & INFRASTRUCTURE
+# =============================================================================
+
+# Docker and containerization
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Cloud deployment configs
+terraform/
+k8s/
+helm/
+deployment.yaml
+service.yaml
+
+# CI/CD pipelines
+.github/workflows/
+.gitlab-ci.yml
+jenkins/
+
+# =============================================================================
+# TEMPORARY & CACHE FILES
+# =============================================================================
+
+# Python cache and bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Old package build directories (cleaned up)
+Credit_Card_Churn_Prediction.egg-info/
+enhanced_churn_prediction.egg-info/
+
+# Virtual environments
+venv/
+env/
+ENV/
+.env
+.venv
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+*.ipynb
+
+# =============================================================================
+# SYSTEM & OS FILES
+# =============================================================================
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# =============================================================================
+# BACKUP & VERSION FILES
+# =============================================================================
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+*.tmp
+*.temp
+
+# Version control
+.git/
+.gitattributes
+.gitmodules
+*.patch
+
+# =============================================================================
+# PERFORMANCE & PROFILING
+# =============================================================================
+
+# Performance profiling
+*.prof
+*.profile
+performance_logs/
+benchmarks/
+
+# Memory profiling
+*.memprof
+memory_logs/
+
+# =============================================================================
+# DOCUMENTATION DRAFTS & NOTES
+# =============================================================================
+
+# Private documentation and notes
+notes/
+private_docs/
+draft/
+TODO.md
+NOTES.md
+
+# =============================================================================
+# INTERNAL DOCUMENTATION & CLEANUP FILES
+# =============================================================================
+
+# Internal cleanup and summary documentation
+PROJECT_CLEANUP_SUMMARY.md
+REPOSITORY_CLEANUP_SUMMARY.md
+FRONTEND_TRANSFORMATION_SUMMARY.md
+
+# Internal workflow and implementation guides
+COLAB_WORKFLOW_GUIDE.md
+COMPLETE_WORKFLOW_GUIDE.md
+ENHANCED_IMPLEMENTATION_GUIDE.md
+
+# Internal fix documentation
+FEATURE_COUNT_FIX.md
+
+# Internal pipeline and utility scripts
+clean_restart_pipeline.py
+test_installation.py
+
+# Research papers and references
+papers/
+references/
+literature/
+
+# =============================================================================
+# ALLOWED FILES (COMMENTED FOR CLARITY)
+# =============================================================================
+
+# These files WILL be included in the repository:
+# README.md - Public project description with IP notice
+# requirements.txt - Dependencies list (no sensitive info)
+# setup.py - Package installation script
+# templates/ - HTML/CSS/JS templates (UI only, no business logic)
+# static/ - Public web assets (CSS, JS, images)
+# LICENSE - Open source license
+# CONTRIBUTING.md - Contribution guidelines
+# config_template.py - Configuration template (no sensitive values)
+# 
+# Note: Templates are safe to include as they contain only UI markup
+# and client-side JavaScript without sensitive business logic

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Credit Card Churn Prediction System - By Rasith Novfal S</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #64748b;
+            --success-color: #059669;
+            --warning-color: #d97706;
+            --danger-color: #dc2626;
+            --dark-color: #1e293b;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        
+        .hero-section {
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .stats-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .stats-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stats-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1rem 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .btn-primary-custom {
+            background: linear-gradient(45deg, var(--primary-color), #3b82f6);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+        }
+        
+        .section-padding {
+            padding: 80px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-chart-line me-2"></i>
+                ChurnPredict Pro
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard">Analytics</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/model-info">Model Info</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">Advanced Churn Prediction</h1>
+            <p class="hero-subtitle">
+                Intelligent ensemble learning with explainable AI for customer retention
+            </p>
+            
+            <!-- Real-time Analytics Cards -->
+            <div class="row mt-5">
+                <div class="col-md-3">
+                    <div class="stats-card text-center">
+                        <div class="stats-number text-primary">{{ analytics.total_predictions }}</div>
+                        <div class="text-muted">Total Predictions</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card text-center">
+                        <div class="stats-number text-success">{{ analytics.recent_predictions }}</div>
+                        <div class="text-muted">This Week</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card text-center">
+                        <div class="stats-number text-warning">{{ analytics.risk_distribution.High or 0 }}</div>
+                        <div class="text-muted">High Risk</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stats-card text-center">
+                        <div class="stats-number text-info">{{ "%.1f"|format(analytics.average_risk_score * 100) }}%</div>
+                        <div class="text-muted">Avg Risk Score</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-5">
+                <a href="/predict" class="btn btn-primary-custom btn-lg me-3">
+                    <i class="fas fa-magic me-2"></i>Make Prediction
+                </a>
+                <a href="/dashboard" class="btn btn-outline-light btn-lg">
+                    <i class="fas fa-chart-bar me-2"></i>View Dashboard
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section-padding bg-light">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-lg-12">
+                    <h2 class="display-4 fw-bold mb-3">Advanced Features</h2>
+                    <p class="lead text-muted">Powered by state-of-the-art machine learning and AI explainability</p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon text-primary">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Intelligent Ensemble</h4>
+                        <p class="text-muted">Multi-tier ensemble learning with automated model selection for superior accuracy</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon text-success">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Explainable AI</h4>
+                        <p class="text-muted">SHAP-powered explanations showing which factors drive churn predictions</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon text-warning">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Real-time Analytics</h4>
+                        <p class="text-muted">Live dashboards with prediction trends and customer behavior insights</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon text-danger">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Risk Assessment</h4>
+                        <p class="text-muted">Comprehensive risk factor analysis with actionable retention strategies</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon text-info">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Smart Features</h4>
+                        <p class="text-muted">Advanced feature engineering with 100+ intelligent derived features</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon text-secondary">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">High Accuracy</h4>
+                        <p class="text-muted">96%+ accuracy with uncertainty quantification and confidence intervals</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
